@@ -5,59 +5,143 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RealSmartThink</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 0 20px;
+    max-width: 980px;
+    margin: 40px auto 60px;
+    padding: 0 24px;
     line-height: 1.6;
+    color: #111;
+    background: #fff;
 }
 
-h1 {
-    font-size: 44px;
-    margin-bottom: 10px;
-    font-weight: 600;
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 56px;
 }
 
-.tagline {
+.site-title {
     font-size: 22px;
-    color: #555;
-    margin-bottom: 35px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.site-nav {
+    display: flex;
+    gap: 24px;
+}
+
+.site-nav a {
+    text-decoration: none;
+    color: #2c6bed;
+    font-weight: 500;
+}
+
+.site-nav a:hover {
+    text-decoration: underline;
 }
 
 .hero {
-    margin-bottom: 50px;
+    max-width: 760px;
+    margin-bottom: 56px;
+}
+
+.hero h1 {
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin: 0 0 16px;
+    font-weight: 700;
+}
+
+.tagline {
+    font-size: 24px;
+    color: #555;
+    margin: 0 0 28px;
+    font-weight: 500;
+}
+
+.hero p {
+    font-size: 21px;
+    color: #222;
+    max-width: 760px;
+    margin: 0 0 30px;
 }
 
 .button {
     display: inline-block;
-    margin-top: 20px;
-    padding: 14px 24px;
+    padding: 15px 24px;
     background: #2c6bed;
     color: white;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 18px;
+    font-weight: 600;
+}
+
+.button:hover {
+    background: #2459c9;
 }
 
 .section {
-    margin-top: 60px;
+    margin-top: 56px;
 }
 
-.tool {
-    padding: 18px;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    margin-bottom: 15px;
+.section h2 {
+    font-size: 30px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
 }
 
-.tool a {
+.section-intro {
+    max-width: 720px;
+    color: #444;
+    margin-top: -6px;
+    margin-bottom: 22px;
+}
+
+.tool-card {
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 22px;
+    background: #fafafa;
+    max-width: 760px;
+}
+
+.tool-card a {
+    font-size: 24px;
     font-weight: 600;
     text-decoration: none;
     color: #2c6bed;
+    letter-spacing: -0.02em;
+}
+
+.tool-card a:hover {
+    text-decoration: underline;
+}
+
+.tool-card p {
+    margin: 12px 0 0;
+    color: #333;
+}
+
+.coming-soon {
+    max-width: 760px;
+    padding-left: 22px;
+}
+
+.coming-soon li {
+    margin-bottom: 10px;
+}
+
+.why {
+    max-width: 760px;
 }
 
 .footer {
@@ -66,27 +150,43 @@ h1 {
     color: #777;
 }
 
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-}
+@media (max-width: 700px) {
+    body {
+        margin-top: 28px;
+        padding: 0 18px;
+    }
 
-.site-title {
-    font-size: 22px;
-    font-weight: 600;
-}
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 40px;
+    }
 
-.site-nav a {
-    margin-left: 18px;
-    text-decoration: none;
-    color: #2c6bed;
-    font-weight: 500;
-}
+    .site-nav {
+        gap: 18px;
+        flex-wrap: wrap;
+    }
 
-.site-nav a:hover {
-    text-decoration: underline;
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .tagline {
+        font-size: 21px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .section h2 {
+        font-size: 26px;
+    }
+
+    .tool-card a {
+        font-size: 22px;
+    }
 }
 </style>
 </head>
@@ -103,75 +203,60 @@ h1 {
     </nav>
 </header>
 
-<div class="hero">
+<section class="hero">
+    <h1>Some questions hide the real answer.</h1>
 
-<h1>RealSmartThink</h1>
+    <div class="tagline">Better questions. Clearer answers.</div>
 
-<div class="tagline">
-Better questions. Clearer answers.
-</div>
+    <p>
+        RealSmartThink is a growing library of tools and explanations for people
+        who want to think more clearly about money, risk, probability and the real world.
+    </p>
 
-<p>
-Many debates go nowhere because they start with the wrong question.
-RealSmartThink is a growing library of tools designed to help you think
-more clearly about money, risk, probability and the real world.
-</p>
+    <a class="button" href="real-inflation-rate.html">Explore the first tool</a>
+</section>
 
-<a class="button" href="real-inflation-rate.html">
-Explore the first tool
-</a>
+<section class="section">
+    <h2>Featured tool</h2>
+    <p class="section-intro">
+        Start with a question that affects almost everyone, but not everyone equally.
+    </p>
 
-</div>
+    <div class="tool-card">
+        <a href="real-inflation-rate.html">What is your real inflation rate?</a>
+        <p>
+            Official inflation is an average. Your personal inflation rate depends on
+            what you actually spend money on — and the difference can be significant.
+        </p>
+    </div>
+</section>
 
-<div class="section">
+<section class="section">
+    <h2>Coming soon</h2>
+    <ul class="coming-soon">
+        <li>How long will your money last in retirement?</li>
+        <li>How risky is your trading strategy?</li>
+        <li>What are the real odds of winning the lottery?</li>
+        <li>How misleading is the average?</li>
+    </ul>
+</section>
 
-<h2>Featured tool</h2>
+<section class="section why">
+    <h2>Why RealSmartThink exists</h2>
 
-<div class="tool">
-<a href="real-inflation-rate.html">
-What is your real inflation rate?
-</a>
+    <p>
+        Many things that seem obvious turn out to depend on the assumptions behind them.
+        Averages can mislead. Risks can be misunderstood. Headlines can flatten important differences.
+    </p>
 
-<p>
-Official inflation is an average. But your personal inflation rate depends
-on what you actually spend money on — and the difference can be significant.
-</p>
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>Coming soon</h2>
-
-<ul>
-<li>How long will your money last in retirement?</li>
-<li>How risky is your trading strategy?</li>
-<li>What are the real odds of winning the lottery?</li>
-<li>How misleading is the average?</li>
-</ul>
-
-</div>
-
-<div class="section">
-
-<h2>Why RealSmartThink exists</h2>
-
-<p>
-The world is full of opinions, but often short on clear thinking.
-Many questions that seem complicated become easier to understand
-when you test them with numbers.
-</p>
-
-<p>
-RealSmartThink offers simple tools and explanations designed to help you
-explore those questions for yourself.
-</p>
-
-</div>
+    <p>
+        RealSmartThink exists to make those questions clearer through simple tools,
+        better framing and more careful reasoning.
+    </p>
+</section>
 
 <div class="footer">
-<p>© RealSmartThink</p>
+    <p>© RealSmartThink</p>
 </div>
 
 </body>
