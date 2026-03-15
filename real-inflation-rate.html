@@ -103,7 +103,16 @@ Inflation:
 <button onclick="calculateInflation()">Calculate</button>
 
 <div class="result" id="result"></div>
+<div id="official" style="margin-top:10px;color:#555;"></div>
+<div style="margin-top:20px">
 
+<div style="margin-bottom:6px">Your inflation</div>
+<div id="barPersonal" style="height:14px;background:#2c6bed;width:0%"></div>
+
+<div style="margin-top:10px;margin-bottom:6px">Official inflation</div>
+<div id="barOfficial" style="height:14px;background:#ccc;width:50%"></div>
+
+</div>    
 <script>
 
 function calculateInflation() {
@@ -135,7 +144,14 @@ function calculateInflation() {
     document.getElementById("result").innerText =
         "Your estimated inflation rate: " +
         personalInflation.toFixed(2) + "%";
+
 }
+
+document.querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", calculateInflation);
+});
+
+calculateInflation();
 
 </script>
 
