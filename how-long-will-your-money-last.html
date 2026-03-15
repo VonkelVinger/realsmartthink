@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How long will your money last? | RealSmartThink</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #111;
+      background: #fff;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 600;
+    }
+
+    .tagline {
+      color: #444;
+      margin-bottom: 30px;
+      font-size: 20px;
+    }
+
+    .note {
+      font-size: 14px;
+      color: #666;
+      margin-top: -10px;
+      margin-bottom: 30px;
+    }
+
+    .input-row {
+      margin-bottom: 14px;
+    }
+
+    input {
+      padding: 6px;
+      width: 120px;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .subresult {
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .timeline-wrap {
+      margin-top: 24px;
+    }
+
+    .timeline-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .timeline {
+      height: 16px;
+      width: 100%;
+      background: #eee;
+      overflow: hidden;
+      border-radius: 999px;
+    }
+
+    .timeline-fill {
+      height: 16px;
+      width: 0%;
+      background: #2c6bed;
+    }
+
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .site-title {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .site-nav a {
+      margin-left: 18px;
+      text-decoration: none;
+      color: #2c6bed;
+      font-weight: 500;
+    }
+
+    .site-nav a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .site-nav a {
+        margin-left: 0;
+        margin-right: 18px;
+      }
+
+      input {
+        width: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-title">
+    RealSmartThink
+  </div>
+
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="real-inflation-rate.html">Tools</a>
+    <a href="#">About</a>
+  </nav>
+</header>
+
+<h1>How long will your money last?</h1>
+
+<p class="tagline">
+  A simple way to see how spending, inflation and investment returns affect your savings.
+</p>
+
+<p class="note">
+  Amounts are shown in US dollars for convenience, but the calculation works in any currency.
+  You can enter the numbers in your own currency and interpret the results the same way.
+</p>
+
+<h2>Your assumptions</h2>
+
+<div class="input-row">
+  Current savings:
+  <input id="savings" value="500000"> $
+</div>
+
+<div class="input-row">
+  Annual spending:
+  <input id="spending" value="30000"> $
+</div>
+
+<div class="input-row">
+  Investment return:
+  <input id="returnRate" value="5"> %
+</div>
+
+<div class="input-row">
+  Inflation:
+  <input id="inflationRate" value="2"> %
+</div>
+
+<div class="input-row">
+  Current age:
+  <input id="currentAge" value="65">
+</div>
+
+<div class="result" id="result"></div>
+<div class="subresult" id="ageResult"></div>
+<div class="subresult" id="spendingResult"></div>
+
+<div class="timeline-wrap">
+  <div class="timeline-labels">
+    <span id="startAgeLabel">Age 65</span>
+    <span id="endAgeLabel">Age 93</span>
+  </div>
+
+  <div class="timeline">
+    <div id="timelineFill" class="timeline-fill"></div>
+  </div>
+</div>
+
+<hr style="margin:40px 0">
+
+<h2>Why this question matters</h2>
+
+<p>
+Many retirement discussions focus on how much money you need. But an equally important
+question is how long your savings will last once spending, inflation and investment returns
+start interacting over time.
+</p>
+
+<p>
+What feels comfortable at first can look very different after 15 or 20 years if your spending
+keeps rising while your savings begin to shrink.
+</p>
+
+<h2>What this calculator shows</h2>
+
+<p>
+This tool estimates how long your money may last by applying annual investment growth,
+subtracting annual spending, and then increasing that spending by inflation each year.
+</p>
+
+<p>
+It is a simplified model, but it helps illustrate a powerful point:
+<strong>small differences in spending, returns or inflation can produce very different outcomes over time.</strong>
+</p>
+
+<p>
+A better question is often not “How much money do I have?” but
+<strong>“How long will it last?”</strong>
+</p>
+
+<script>
+  function calculateMoneyLasts() {
+    let savings = parseFloat(document.getElementById("savings").value) || 0;
+    let spending = parseFloat(document.getElementById("spending").value) || 0;
+    const returnRate = (parseFloat(document.getElementById("returnRate").value) || 0) / 100;
+    const inflationRate = (parseFloat(document.getElementById("inflationRate").value) || 0) / 100;
+    const currentAge = parseFloat(document.getElementById("currentAge").value) || 0;
+
+    let years = 0;
+    let maxYears = 100;
+
+    while (savings > 0 && years < maxYears) {
+      savings = savings * (1 + returnRate);
+      savings = savings - spending;
+      spending = spending * (1 + inflationRate);
+      years++;
+    }
+
+    const endAge = currentAge + years;
+
+    document.getElementById("result").innerText =
+      "Your savings would last about " + years + " years.";
+
+    document.getElementById("ageResult").innerText =
+      "If you are " + currentAge + " today, they would run out at about age " + endAge + ".";
+
+    document.getElementById("spendingResult").innerText =
+      "By then, your annual spending would have risen to about $" + Math.round(spending).toLocaleString() + ".";
+
+    document.getElementById("startAgeLabel").innerText = "Age " + currentAge;
+    document.getElementById("endAgeLabel").innerText = "Age " + endAge;
+
+    const timelinePercent = Math.min((years / 40) * 100, 100);
+    document.getElementById("timelineFill").style.width = timelinePercent + "%";
+  }
+
+  document.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("input", calculateMoneyLasts);
+  });
+
+  calculateMoneyLasts();
+</script>
+
+</body>
+</html>
