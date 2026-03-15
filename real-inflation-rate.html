@@ -32,15 +32,6 @@ input {
     width: 80px;
 }
 
-button {
-    margin-top: 20px;
-    padding: 10px 18px;
-    background: #2c6bed;
-    color: white;
-    border: none;
-    border-radius: 6px;
-}
-
 .result {
     margin-top: 30px;
     font-size: 24px;
@@ -66,35 +57,35 @@ along with the current inflation rate for that category.
 <h2>Spending categories</h2>
 
 <div class="input-row">
-Food: 
+Food:
 <input id="foodWeight" value="20"> %
 Inflation:
 <input id="foodInflation" value="8"> %
 </div>
 
 <div class="input-row">
-Housing: 
+Housing:
 <input id="housingWeight" value="30"> %
 Inflation:
 <input id="housingInflation" value="5"> %
 </div>
 
 <div class="input-row">
-Transport: 
+Transport:
 <input id="transportWeight" value="15"> %
 Inflation:
 <input id="transportInflation" value="7"> %
 </div>
 
 <div class="input-row">
-Utilities: 
+Utilities:
 <input id="utilitiesWeight" value="10"> %
 Inflation:
 <input id="utilitiesInflation" value="9"> %
 </div>
 
 <div class="input-row">
-Other: 
+Other:
 <input id="otherWeight" value="25"> %
 Inflation:
 <input id="otherInflation" value="4"> %
@@ -102,15 +93,17 @@ Inflation:
 
 <div class="result" id="result"></div>
 <div id="official" style="margin-top:10px;color:#555;"></div>
+
 <div style="margin-top:20px">
 
 <div style="margin-bottom:6px">Your inflation</div>
 <div id="barPersonal" style="height:14px;background:#2c6bed;width:0%"></div>
 
 <div style="margin-top:10px;margin-bottom:6px">Official inflation</div>
-<div id="barOfficial" style="height:14px;background:#ccc;width:50%"></div>
+<div id="barOfficial" style="height:14px;background:#ccc;width:0%"></div>
 
-</div>    
+</div>
+
 <script>
 
 const official = 5.0;   // example official inflation rate
@@ -148,7 +141,6 @@ function calculateInflation() {
     document.getElementById("official").innerText =
         "Example official inflation rate: " + official + "%";
 
-
     let maxValue = Math.max(personalInflation, official);
 
     let personalWidth = (personalInflation / maxValue) * 100;
@@ -159,44 +151,6 @@ function calculateInflation() {
 
     document.getElementById("barOfficial").style.width =
         officialWidth + "%";
-}
-
-document.querySelectorAll("input").forEach(input => {
-    input.addEventListener("input", calculateInflation);
-});
-
-calculateInflation();
-
-</script>
-
-    let weights = [
-        parseFloat(foodWeight.value),
-        parseFloat(housingWeight.value),
-        parseFloat(transportWeight.value),
-        parseFloat(utilitiesWeight.value),
-        parseFloat(otherWeight.value)
-    ];
-
-    let inflations = [
-        parseFloat(foodInflation.value),
-        parseFloat(housingInflation.value),
-        parseFloat(transportInflation.value),
-        parseFloat(utilitiesInflation.value),
-        parseFloat(otherInflation.value)
-    ];
-
-    let total = 0;
-
-    for (let i = 0; i < weights.length; i++) {
-        total += weights[i] * inflations[i];
-    }
-
-    let personalInflation = total / 100;
-
-    document.getElementById("result").innerText =
-        "Your estimated inflation rate: " +
-        personalInflation.toFixed(2) + "%";
-
 }
 
 document.querySelectorAll("input").forEach(input => {
