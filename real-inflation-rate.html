@@ -100,8 +100,6 @@ Inflation:
 <input id="otherInflation" value="4"> %
 </div>
 
-<button onclick="calculateInflation()">Calculate</button>
-
 <div class="result" id="result"></div>
 <div id="official" style="margin-top:10px;color:#555;"></div>
 <div style="margin-top:20px">
@@ -115,7 +113,61 @@ Inflation:
 </div>    
 <script>
 
+const official = 5.0;   // example official inflation rate
+
 function calculateInflation() {
+
+    let weights = [
+        parseFloat(foodWeight.value),
+        parseFloat(housingWeight.value),
+        parseFloat(transportWeight.value),
+        parseFloat(utilitiesWeight.value),
+        parseFloat(otherWeight.value)
+    ];
+
+    let inflations = [
+        parseFloat(foodInflation.value),
+        parseFloat(housingInflation.value),
+        parseFloat(transportInflation.value),
+        parseFloat(utilitiesInflation.value),
+        parseFloat(otherInflation.value)
+    ];
+
+    let total = 0;
+
+    for (let i = 0; i < weights.length; i++) {
+        total += weights[i] * inflations[i];
+    }
+
+    let personalInflation = total / 100;
+
+    document.getElementById("result").innerText =
+        "Your estimated inflation rate: " +
+        personalInflation.toFixed(2) + "%";
+
+    document.getElementById("official").innerText =
+        "Example official inflation rate: " + official + "%";
+
+
+    let maxValue = Math.max(personalInflation, official);
+
+    let personalWidth = (personalInflation / maxValue) * 100;
+    let officialWidth = (official / maxValue) * 100;
+
+    document.getElementById("barPersonal").style.width =
+        personalWidth + "%";
+
+    document.getElementById("barOfficial").style.width =
+        officialWidth + "%";
+}
+
+document.querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", calculateInflation);
+});
+
+calculateInflation();
+
+</script>
 
     let weights = [
         parseFloat(foodWeight.value),
