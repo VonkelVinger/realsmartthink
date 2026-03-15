@@ -3,73 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>RealSmartThink</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
-
-body{
+body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    max-width:900px;
-    margin:60px auto;
-    padding:0 20px;
-    line-height:1.6;
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    line-height: 1.6;
 }
 
-h1{
-    font-size:44px;
-    margin-bottom:10px;
-    font-weight:600;
+h1 {
+    font-size: 44px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
-.tagline{
-    font-size:22px;
-    color:#555;
-    margin-bottom:35px;
+.tagline {
+    font-size: 22px;
+    color: #555;
+    margin-bottom: 35px;
 }
 
-.hero{
-    margin-bottom:50px;
+.hero {
+    margin-bottom: 50px;
 }
 
-.button{
-    display:inline-block;
-    margin-top:20px;
-    padding:14px 24px;
-    background:#2c6bed;
-    color:white;
-    text-decoration:none;
-    border-radius:6px;
-    font-size:18px;
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 24px;
+    background: #2c6bed;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 18px;
 }
 
-.section{
-    margin-top:60px;
+.section {
+    margin-top: 60px;
 }
 
-.tool{
-    padding:18px;
-    border:1px solid #eee;
-    border-radius:6px;
-    margin-bottom:15px;
+.tool {
+    padding: 18px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    margin-bottom: 15px;
 }
 
-.tool a{
-    font-weight:bold;
-    text-decoration:none;
-    color:#2c6bed;
+.tool a {
+    font-weight: 600;
+    text-decoration: none;
+    color: #2c6bed;
 }
 
-.footer{
-    margin-top:80px;
-    font-size:14px;
-    color:#777;
+.footer {
+    margin-top: 80px;
+    font-size: 14px;
+    color: #777;
 }
 
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.site-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.site-nav a {
+    margin-left: 18px;
+    text-decoration: none;
+    color: #2c6bed;
+    font-weight: 500;
+}
+
+.site-nav a:hover {
+    text-decoration: underline;
+}
 </style>
 </head>
 
 <body>
+
+<header class="site-header">
+    <div class="site-title">RealSmartThink</div>
+
+    <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="real-inflation-rate.html">Tools</a>
+        <a href="#">About</a>
+    </nav>
+</header>
 
 <div class="hero">
 
@@ -81,20 +113,19 @@ Better questions. Clearer answers.
 
 <p>
 Many debates go nowhere because they start with the wrong question.
-RealSmartThink explores important ideas with simple tools and models
-that help you test them for yourself.
+RealSmartThink is a growing library of tools designed to help you think
+more clearly about money, risk, probability and the real world.
 </p>
 
 <a class="button" href="real-inflation-rate.html">
-Start with a question
+Explore the first tool
 </a>
 
 </div>
 
-
 <div class="section">
 
-<h2>Featured question</h2>
+<h2>Featured tool</h2>
 
 <div class="tool">
 <a href="real-inflation-rate.html">
@@ -102,17 +133,16 @@ What is your real inflation rate?
 </a>
 
 <p>
-Official inflation is an average. But your personal inflation rate
-depends on what you actually spend money on.
+Official inflation is an average. But your personal inflation rate depends
+on what you actually spend money on — and the difference can be significant.
 </p>
 </div>
 
 </div>
 
-
 <div class="section">
 
-<h2>Questions coming next</h2>
+<h2>Coming soon</h2>
 
 <ul>
 <li>How long will your money last in retirement?</li>
@@ -122,7 +152,6 @@ depends on what you actually spend money on.
 </ul>
 
 </div>
-
 
 <div class="section">
 
@@ -135,21 +164,15 @@ when you test them with numbers.
 </p>
 
 <p>
-RealSmartThink offers simple tools designed to help you explore
-those questions yourself.
+RealSmartThink offers simple tools and explanations designed to help you
+explore those questions for yourself.
 </p>
 
 </div>
-
 
 <div class="footer">
-
-<p>
-© RealSmartThink
-</p>
-
+<p>© RealSmartThink</p>
 </div>
-
 
 </body>
 </html>
